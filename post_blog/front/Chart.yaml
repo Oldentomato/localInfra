@@ -1,0 +1,6 @@
+apiVersion: v2
+name: post-frontend
+description: Helm chart for post-blog uploader frontend served by Nginx
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

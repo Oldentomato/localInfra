@@ -1,0 +1,6 @@
+apiVersion: v2
+name: post-backend
+description: Helm chart for post-blog uploader Express backend
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
