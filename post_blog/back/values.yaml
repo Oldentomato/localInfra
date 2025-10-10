@@ -1,5 +1,4 @@
 replicaCount: 1
-namespace: post-system
 
 image:
   repository: oldentomato/post-express
