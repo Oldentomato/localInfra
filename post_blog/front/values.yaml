@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: oldentomato/post-react
-  tag: 1.0.3
+  tag: 1.0.4
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
