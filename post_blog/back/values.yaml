@@ -8,3 +8,4 @@ service:
   port: 4000
 secrets:
   name: post-back-secrets
+revisionHistoryLimit: 3

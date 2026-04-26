@@ -1,0 +1,5 @@
+secrets.yaml
+helm_install_service.sh
+regen_secret.sh
+.helmignore
+minecraft

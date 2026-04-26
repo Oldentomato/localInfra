@@ -8,3 +8,4 @@ service:
   port: 80
 secrets:
   name: post-front-secrets
+revisionHistoryLimit: 3
