@@ -1,0 +1,6 @@
+apiVersion: v2
+name: tomato-file-frontend
+description: Helm chart for tomato file frontend served by Nginx
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
