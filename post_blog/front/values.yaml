@@ -6,6 +6,4 @@ image:
 service:
   type: ClusterIP
   port: 80
-secrets:
-  name: post-front-secrets
 revisionHistoryLimit: 3
