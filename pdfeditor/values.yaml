@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: udd43/pdf-editor
-  tag: 1.1.9
+  tag: 1.2.0
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
