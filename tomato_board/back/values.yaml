@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: oldentomato/tomato-board-api
-  tag: ""
+  tag: "7172fde"
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
@@ -9,4 +9,3 @@ service:
 secrets:
   name: tomato-board-back-secrets
 revisionHistoryLimit: 3
-
