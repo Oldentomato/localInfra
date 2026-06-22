@@ -6,6 +6,4 @@ image:
 service:
   type: ClusterIP
   port: 3000
-secrets:
-  name: post-back-secrets
 revisionHistoryLimit: 3
