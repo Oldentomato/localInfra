@@ -1,0 +1,11 @@
+replicaCount: 1
+image:
+  repository: oldentomato/tomato-board-web
+  tag: ""
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 3000
+secrets:
+  name: post-back-secrets
+revisionHistoryLimit: 3

@@ -1,0 +1,12 @@
+replicaCount: 1
+image:
+  repository: oldentomato/tomato-board-api
+  tag: ""
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 8080
+secrets:
+  name: tomato-board-back-secrets
+revisionHistoryLimit: 3
+
