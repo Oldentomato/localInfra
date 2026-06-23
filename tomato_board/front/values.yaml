@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: oldentomato/tomato-board-web
-  tag: "63bd536"
+  tag: 3711647
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
