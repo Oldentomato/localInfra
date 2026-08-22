@@ -1,4 +1,4 @@
-nameOverride: back
+nameOverride: tomato-studio-back
 
 replicaCount: 1
 revisionHistoryLimit: 3

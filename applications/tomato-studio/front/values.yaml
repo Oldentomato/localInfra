@@ -1,4 +1,4 @@
-nameOverride: front
+nameOverride: tomato-studio-front
 
 replicaCount: 1
 revisionHistoryLimit: 3
