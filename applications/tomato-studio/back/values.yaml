@@ -3,7 +3,7 @@ replicaCount: 1
 revisionHistoryLimit: 3
 image:
   repository: oldentomato/tomato-studio-back
-  tag: "sha-7a3f8ce"
+  tag: "sha-5f4c467"
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
