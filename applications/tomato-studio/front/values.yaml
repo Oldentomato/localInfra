@@ -1,10 +1,9 @@
 nameOverride: tomato-studio-front
-
 replicaCount: 1
 revisionHistoryLimit: 3
 image:
   repository: oldentomato/tomato-studio-web
-  tag: "sha-6cb2c12"
+  tag: "sha-5f4c467"
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
