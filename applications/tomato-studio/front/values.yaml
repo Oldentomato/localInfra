@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 nameOverride: tomato-studio-front
 
-=======
-nameOverride: front
->>>>>>> ab9552a3286ecfd2f6d2fa97c171fcab94568d1d
 replicaCount: 1
 revisionHistoryLimit: 3
 image:
