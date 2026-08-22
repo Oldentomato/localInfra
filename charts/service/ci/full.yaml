@@ -1,0 +1,43 @@
+nameOverride: mig-agent
+
+replicaCount: 2
+revisionHistoryLimit: 3
+
+image:
+  repository: oldentomato/mig-agent
+  tag: "1.2.3"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+
+service:
+  type: ClusterIP
+  port: 8080
+  targetPort: 8080
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi
+
+persistence:
+  enabled: true
+  storageClass: ""
+  accessModes:
+    - ReadWriteOnce
+  size: 20Gi
+  mountPath: /app/data
+
+secret:
+  enabled: true
+  name: mig-agent-secrets
+  encryptedData:
+    API_KEY: AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+    DATABASE_PASSWORD: AgBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB==
+
+env:
+  - name: APP_ENV
+    value: production

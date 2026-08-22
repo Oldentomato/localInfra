@@ -1,0 +1,6 @@
+apiVersion: v2
+name: service
+description: Standard application Helm chart for GitOps services
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

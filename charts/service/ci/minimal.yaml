@@ -1,0 +1,19 @@
+nameOverride: mig-agent
+
+replicaCount: 1
+
+image:
+  repository: oldentomato/mig-agent
+  tag: "1.0.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+  targetPort: 8080
+
+persistence:
+  enabled: false
+
+secret:
+  enabled: false

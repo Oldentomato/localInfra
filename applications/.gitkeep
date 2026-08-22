@@ -1,0 +1,2 @@
+# Keep the applications/ directory in git.
+# ApplicationSet watches applications/<service-name>/ only.
