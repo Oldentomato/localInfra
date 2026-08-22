@@ -1,20 +1,15 @@
 nameOverride: front
-
 replicaCount: 1
 revisionHistoryLimit: 3
-
 image:
   repository: oldentomato/tomato-studio-web
-  tag: "1.0.0"
+  tag: "sha-6cb2c12"
   pullPolicy: IfNotPresent
-
 service:
   type: ClusterIP
   port: 80
   targetPort: 80
-
 persistence:
   enabled: false
-
 secret:
   enabled: false
