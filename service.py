@@ -20,6 +20,7 @@ PROXY_INGRESS_DIR = WORKSPACE_ROOT / "system" / "proxy_ingress"
 
 KUBESEAL_CONTROLLER_NAME = "sealed-secret-sealed-secrets"
 KUBESEAL_CONTROLLER_NAMESPACE = "default"
+OAUTH_MIDDLEWARES = "o11y-oauth-errors@kubernetescrd,o11y-forward-auth@kubernetescrd"
 
 
 def parse_image(image: str) -> Tuple[str, str]:
@@ -53,6 +54,7 @@ def render_values(
     secret_enabled: bool,
     secret_name: str,
     encrypted_data: Dict[str, str],
+    image_pull_secret: str,
 ) -> str:
     lines = [
         f"nameOverride: {name}",
@@ -64,15 +66,22 @@ def render_values(
         f"  repository: {repository}",
         f'  tag: "{tag}"',
         "  pullPolicy: IfNotPresent",
-        "",
-        "service:",
-        "  type: ClusterIP",
-        f"  port: {port}",
-        f"  targetPort: {target_port}",
-        "",
-        "persistence:",
-        f"  enabled: {'true' if pvc_size else 'false'}",
     ]
+    if image_pull_secret:
+        lines.append("imagePullSecrets:")
+        lines.append(f"  - name: {image_pull_secret}")
+    lines.extend(
+        [
+            "",
+            "service:",
+            "  type: ClusterIP",
+            f"  port: {port}",
+            f"  targetPort: {target_port}",
+            "",
+            "persistence:",
+            f"  enabled: {'true' if pvc_size else 'false'}",
+        ]
+    )
     if pvc_size:
         lines.extend(
             [
@@ -95,7 +104,7 @@ def render_values(
         lines.append("  encryptedData:")
         if encrypted_data:
             for key, value in encrypted_data.items():
-                lines.append(f"    {key}: {value}")
+                lines.append(f"    {key}: {yaml_quote(value)}")
         else:
             lines.append("    {}")
     lines.append("")
@@ -116,14 +125,20 @@ def render_ingress(
     port: int,
     path: str,
     tls: bool,
+    middleware: bool,
 ) -> str:
+    annotation_lines = []
+    if tls:
+        annotation_lines.append("    cert-manager.io/cluster-issuer: letsencrypt-prod")
+    if middleware:
+        annotation_lines.append(
+            f'    traefik.ingress.kubernetes.io/router.middlewares: "{OAUTH_MIDDLEWARES}"'
+        )
     annotations = ""
+    if annotation_lines:
+        annotations = "  annotations:\n" + "\n".join(annotation_lines) + "\n"
     tls_block = ""
     if tls:
-        annotations = (
-            "  annotations:\n"
-            "    cert-manager.io/cluster-issuer: letsencrypt-prod\n"
-        )
         tls_block = (
             "  tls:\n"
             "  - hosts:\n"
@@ -229,7 +244,15 @@ def kubeseal_encrypt(
         "stringData:",
     ]
     for key, value in plaintext.items():
-        secret_lines.append(f"  {key}: {yaml_quote(value)}")
+        # 숫자·bool은 YAML이 문자열로 보지 않아 kubeseal이 stringData 파싱에 실패한다.
+        # JSON은 겹따옴표 이스케이프가 깨지므로 블록 스칼라로 둔다.
+        if "\n" in value or any(ch in value for ch in '{}"'):
+            secret_lines.append(f"  {key}: |-")
+            for part in value.splitlines() or [""]:
+                secret_lines.append(f"    {part}")
+            continue
+        escaped = value.replace("\\", "\\\\").replace('"', '\\"')
+        secret_lines.append(f'  {key}: "{escaped}"')
     secret_yaml = "\n".join(secret_lines) + "\n"
 
     with tempfile.NamedTemporaryFile("w", suffix=".yaml", delete=False, encoding="utf-8") as tmp:
@@ -360,10 +383,14 @@ def cmd_create(args: argparse.Namespace) -> int:
             secret_enabled=bool(args.secret),
             secret_name=secret_name,
             encrypted_data=encrypted_data,
+            image_pull_secret=args.image_pull_secret,
         ),
         encoding="utf-8",
     )
     print(f"wrote {values_path}")
+
+    if args.middleware and not args.host:
+        print("--middleware has no effect without --host", file=sys.stderr)
 
     if args.host:
         if not PROXY_INGRESS_DIR.parent.exists():
@@ -385,6 +412,7 @@ def cmd_create(args: argparse.Namespace) -> int:
                     port=args.port,
                     path=ingress_path,
                     tls=args.tls,
+                    middleware=args.middleware,
                 ),
                 encoding="utf-8",
             )
@@ -421,6 +449,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="workload name (front, back, worker, ...). writes applications/<name>/<component>/ and shares namespace",
     )
     create.add_argument("--image", required=True, help="repository:tag")
+    create.add_argument(
+        "--image-pull-secret",
+        default="",
+        help="private registry pull secret name written to values as imagePullSecrets",
+    )
     create.add_argument("--port", type=int, required=True, help="Service port")
     create.add_argument("--target-port", type=int, default=0, help="container port (defaults to --port)")
     create.add_argument("--replicas", type=int, default=1)
@@ -431,6 +464,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="Ingress path. default / , or /api when --component is back/backend/api",
     )
     create.add_argument("--tls", action="store_true", help="add cert-manager TLS to the kubectl Ingress YAML")
+    create.add_argument(
+        "--middleware",
+        action="store_true",
+        help="attach o11y oauth forward-auth middlewares to the kubectl Ingress YAML (requires --host)",
+    )
     create.add_argument("--pvc", default="", help="PVC size, e.g. 20Gi")
     create.add_argument("--storage-class", default="", help="StorageClass name (empty = cluster default)")
     create.add_argument("--mount-path", default="/data")

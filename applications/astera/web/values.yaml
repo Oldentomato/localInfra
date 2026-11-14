@@ -1,0 +1,22 @@
+nameOverride: web
+
+replicaCount: 1
+revisionHistoryLimit: 3
+
+image:
+  repository: oldentomato/astera-web
+  tag: "sha-pending"
+  pullPolicy: IfNotPresent
+imagePullSecrets:
+  - name: dockerhub-pull
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+persistence:
+  enabled: false
+
+secret:
+  enabled: false

@@ -68,7 +68,8 @@ python service.py create `
   --image oldentomato/order-agent:1.0.0 `
   --port 8080 `
   --host order-agent.oldensystem.co.kr `
-  --tls
+  --tls `
+  --middleware
 ```
 
 - values: `applications/order-agent/values.yaml`
@@ -141,6 +142,7 @@ back의 Ingress path 기본값은 `/api`다. 바꾸려면 `--ingress-path`를 �
 | `--host` | Ingress 호스트. `system/proxy_ingress/<name>/` 에 YAML 생성 |
 | `--ingress-path` | Ingress path. 기본 `/`, `--component back`이면 `/api` |
 | `--tls` | cert-manager (`letsencrypt-prod`) + `cert-manager-prod` secret |
+| `--middleware` | Ingress에 `o11y-oauth-errors`, `o11y-forward-auth` 연결. `--host`가 있을 때만 YAML에 기록 |
 | `--pvc` | PVC 크기. 예: `20Gi` |
 | `--storage-class` | StorageClass. 비우면 클러스터 기본값 |
 | `--mount-path` | 볼륨 마운트 경로. 기본 `/data` |
