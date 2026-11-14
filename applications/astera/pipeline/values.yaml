@@ -1,23 +1,18 @@
 nameOverride: pipeline
-
 replicaCount: 1
 revisionHistoryLimit: 3
-
 image:
   repository: oldentomato/astera-pipeline
-  tag: "sha-pending"
+  tag: "sha-ca5dd61"
   pullPolicy: IfNotPresent
 imagePullSecrets:
   - name: dockerhub-pull
-
 service:
   type: ClusterIP
   port: 5678
   targetPort: 5678
-
 persistence:
   enabled: false
-
 secret:
   enabled: true
   name: astera-pipeline-secrets
