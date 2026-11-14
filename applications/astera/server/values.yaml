@@ -1,23 +1,18 @@
 nameOverride: server
-
 replicaCount: 1
 revisionHistoryLimit: 3
-
 image:
   repository: oldentomato/astera-server
-  tag: "sha-pending"
+  tag: "sha-ca5dd61"
   pullPolicy: IfNotPresent
 imagePullSecrets:
   - name: dockerhub-pull
-
 service:
   type: ClusterIP
   port: 8000
   targetPort: 8000
-
 persistence:
   enabled: false
-
 secret:
   enabled: true
   name: astera-server-secrets
