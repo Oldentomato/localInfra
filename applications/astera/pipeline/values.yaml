@@ -37,23 +37,7 @@ secret:
     OPENAI_API_KEY: "AgAJP9wMzJnfh8CSeSzWSJUTaZRI9uLJSch3aZw7HbzLV+lgsesA05vl2MZHAsL1n4TyBJxnAJ0GRrcoiKSk59cCCut/ZBZJUo5vnDVcMs0A2uMNGIzUdfF1k+3FvoTSPpsowttHDLlyhalc1X3/rN3i6iA9o5nAyw9hUPHlJG1/yyFk5q+wTenRhmRZJQeU68UqA/g/S6JmVHzV2gf+OMtM7GAB2/KnVOCYPK+foDXxQ6FaNxepTalnwwPFYJB6VYjr9b08jycN2fZTH3giIEq84FXqQWQy8OhSP1nWtd5tWkMVOp9iw7RE+P4wviQpvOV5HpmiPffIgpuyLtOLtngZHJfO/YfuF8rvnTlYTLuzjAPx/TqEuTve4U+F6nTALbak/g9FSzh6yjfcx7cja+2hTC7S8AsTbqP8vYTYntxDv4gpLD7xQ83fryJNOPRWuCRcMfLRycTtiQs2s/CPybn+qet4M4o1NNn1cD6bEWBuf87TqrIROLYo9P+cRYY0sbC+bFyB6RNwv4jIVjI1iSyBEApt81FsX8M0fkFa0QaIcHvPuZAI7VBNtBTNbSTJ6meJpD878AuIGIAnNHPZEqz7EvIbrlN+HqT44s1brKIweZqxMvMrQ1GDZD8x/HQ4v3LS/CuWF0lakW7hI7NjOe2VGIlO2Hlx+hlzGt7dMK12b8txhxcdK0o8F4nHsRNeTBmHAgTjwz6aIuM6uOsKTfoqIELA+UNCjQQMtWrsz+fs58lLq6pdJkItxEw4tJHTYFRDnakkdQM+VdrneD7gooN99hjwPBmZ3HVB17Q3WG/MG8RWVfloBvPyDGAxwqVTt5Gj64kYlTUVSpetvJDukeiYsfUtBXvJE/kk5n5QtzfrhMNN6+gSw+QSYPIQ0kE8tIwyToribuvcOqD6+Gdvgi4gAHW5Ug=="
     OPENAI_MODEL: "AgA/V24O5VbRN+oxZ/Pz44qYiOE8BNsckkv6rmfakUW7OSjGELtCSDdDQsuk1Yx/QfYe16nKegQxfk+qHDmEpaUtahaYZ6fr+X/d90LbLERamR/XBQ0CHOZzSFiegYzMZDDXlIPGKPRccZ++waJPPQJQFgTgcizm4C+XE6dQxpa193yxWwM7b+K1grdAOctu0ggHZReoRIDaY4a1HVfSoyIfefPjH7j3PM2fYcouBJVCjweTf7NrlgPmz/Up6a5oxW3A+WGkXIDZsy5E89j57QTj9zcclIcRX85Th8OUF5nAXJzbyDUBANueiTrEYyLrIWaFmteyuIhIusM5To+CzTsIP3NDyu9nCfNWgyopHgUzBaofnYjSIizssiNva0PxSooQ4XALtxkZuvHWqPckgUGmXA5oHD/o/LW5NCp/oBFPZv9xXB/3IteMjUvww+taP3n2Xhsn98ObTgvzcncL1luOq2C4saUWv+Hl95Kis7uJXrcv2bnTyayVDNakeOYZi5y88X9ujvQqjjavJyPb5T9Jj0K5GK3VNXAqGLSgNX+yJ6mM7Mxz5Wwn6uDLucFLXlGpap625trsNupAxTd0QbDh8x95TM0+7uU4pLuU0DMRxFyH1p9FSC+0Ay59yCEQlYVIbWgdB6mEvGcaY0UZCgziIf/KvONQ8vCMsOultDNkTCxY48vw5ZZ5U3/yb45Ce1bxhZtXvPaGClp2+g=="
     WEBHOOK_URL: AgCJT5t54VjvofU/WPuUbdufDs+bn5xvlzsVq7T483lFK4D3LoDQjB8ONMdoAXzXuB/2D1q2ImNcCxXMMNqfHJzUFJt35SC8kmp4WXa8cmkGvhpr60TWClKuFXJ6Qw/CqPDuZmy1YJ1YbRhlaE+ZCcmrMTAld0Q+vAoMzV6WSiRrzZOqP82bwsFf2V0UzgfAvYqiox9QHHVXE4HLXR+EcD1RKeQVPNdXlPU3chgRht/mtnGOSe0uXaZ3QSq1vcWW2JwLTB7HteVvl/9EuDHynJoa+tzHJuA8ZH8/8hqnH1oMPgSyypHi4dfU2j6JcNkcfn1+PPSN4PIbkwAl1+jdRSDJlb4HCGn/ji6d51i/f6UwnY4vx97UR2ROd5Ax935nP0sq1a9JkxV0SiBHWj2hOSoLoRbexoqYdPmM4ZQZWhMrezW1TTWYQ1YBo6pVCI5ynenxHi5GEbguXpFQzMzDPIY+sL17PFJAfpXNFbRyfw0EqGmiGXPsNC9K+sCKfAuuVpOoebBuuZjFbQjclrvUCl6cuHZsUJ22mBFK4tlHlyORsDVDvUNhvmfz8x+MC+kVCr4XjKmpCSI5PI7L5JBkwDKdawHALctJAiLAwGOv7KOlHeP2lM+njaB38PlvRbiUMEgwvNky7aBj9IsVN6fjZ/tpQhB3j05QuzwfXRn9uUhYaJBLqn/GM5AJUiO9QyFkXZG0ubEIlT7SIVqehH1eWAtcYOsoGI1i
-# n8n 2.x 는 이 값이 정확히 false 가 아니면 노드의 $env 접근을 막는다.
-# Resolve Instagram Account 등이 $env.INSTAGRAM_* 를 읽는다.
-# DB_* 는 n8n 메타데이터(스키마 n8n). 수집 노드 크리덴셜도 기동 시 이 값으로 덮어쓴다.
+# 비밀번호와 DB 접속 정보는 secret.encryptedData 에만 둔다.
 env:
   - name: N8N_BLOCK_ENV_ACCESS_IN_NODE
     value: "false"
-  - name: DB_TYPE
-    value: postgresdb
-  - name: DB_POSTGRESDB_HOST
-    value: "192.168.35.145"
-  - name: DB_POSTGRESDB_PORT
-    value: "25432"
-  - name: DB_POSTGRESDB_DATABASE
-    value: astera
-  - name: DB_POSTGRESDB_USER
-    value: astera
-  - name: DB_POSTGRESDB_PASSWORD
-    value: astera-dev-secret
-  - name: DB_POSTGRESDB_SCHEMA
-    value: n8n
