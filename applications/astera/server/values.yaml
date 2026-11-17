@@ -3,7 +3,7 @@ replicaCount: 1
 revisionHistoryLimit: 3
 image:
   repository: oldentomato/astera-server
-  tag: "sha-fb2fd76"
+  tag: "sha-9fc5772"
   pullPolicy: IfNotPresent
 imagePullSecrets:
   - name: dockerhub-pull
